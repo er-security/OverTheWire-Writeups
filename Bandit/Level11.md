@@ -12,10 +12,13 @@ Helpful Reading Material
     Rot13 on Wikipedia
 ```
 
-`data.txt`の中身  
+data.txtの中身を見る。  
 
 `
 bandit11@bandit:~$ cat data.txt 
 Gur cnffjbeq vf 7k16JArUVv5LxVuJfsSVdbbtaHGlw9D4
 `
+
+問題文から[ROT13](https://ja.wikipedia.org/wiki/ROT13)で暗号化していると思われる。  
+13文字ずらして資格情報ゲット。  
 
