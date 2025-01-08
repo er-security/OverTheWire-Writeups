@@ -45,8 +45,9 @@ cat /etc/bandit_pass/$myname > /tmp/$mytarget
 
 /etc/bandit_pass/$mynameの内容を/tmp/$mytargetにコピーしている。  
 
-つまり、現在のユーザー（bandit23）をmd5でhash化した/tmp配下のファイル名に次の資格情報が入っているということ。  
+つまり、`/usr/bin/cronjob_bandit23.sh`はbandit23の権限で動いているので、  
+ユーザ名"bandit23"を"I am user bandit23"の文字列にしてmd5でhash化した/tmp配下のファイル名に次の資格情報が入っているということ。  
 
-
+開いて  
 クリア  
 
