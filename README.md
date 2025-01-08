@@ -32,3 +32,5 @@ FormulaOne
 Level0を解いたらLevel1へアクセスするための情報が得られるらしい。  
 そのような感じで解いていく。  
 
+OverTheWireの[ルール](https://overthewire.org/rules/)にWriteupに資格情報を記載しないよう書かれているので資格情報は全て米印で隠す。  
+
