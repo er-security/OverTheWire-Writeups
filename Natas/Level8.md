@@ -59,6 +59,8 @@ Input secret: <input name=secret><br>
 16進数に変換した値であることがわかる。  
 逆のことを行う。  
 
+![](img/natas8-2.png)  
+
 入力後のソースコード。  
 
 ```
