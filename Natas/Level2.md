@@ -29,7 +29,7 @@ There is nothing on this page
 </body></html>
 ```
 
-`files/pixel.png`を見てみたが何もない。  
+`files/pixel.png`を調べてみたが何もない。  
 
 `files/`配下が見られるか試してみる。  
 
