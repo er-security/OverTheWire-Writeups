@@ -1,9 +1,9 @@
 ```
 
-Natas Level 5 → Level 6
+Natas Level 4 → Level 5
 
-Username: natas6
-URL:      http://natas6.natas.labs.overthewire.org
+Username: natas5
+URL:      http://natas5.natas.labs.overthewire.org
 
 ```
 
