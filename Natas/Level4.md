@@ -9,7 +9,7 @@ URL:      http://natas4.natas.labs.overthewire.org
 
 ![](img/natas4-1.png)  
 
-"http://natas5.natas.labs.overthewire.org/"からのアクセスでないとダメらしい。  
+`http://natas5.natas.labs.overthewire.org/`からのアクセスでないとダメらしい。  
 
 `Referer`ヘッダを使う。  
 
