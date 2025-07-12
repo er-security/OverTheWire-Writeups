@@ -98,6 +98,21 @@ Choose a JPEG to upload (max 1KB):<br/>
 genRandomString関数でlengthが10の英数字小文字の文字列を返していたり、  
 `$target_path = makeRandomPathFromFilename("upload", $_POST["filename"]);`で、先程の関数で生成した文字列をファイル名にしている。  
 
+コードをよくよく観察していると、ファイルサイズが1KB以下かどうかをチェックしているがjpeg形式かどうかをチェックしていない。  
+つまり好きなファイルをアップロードできてしまう。  
+
+`<input type="hidden" name="filename" value="<?php print genRandomString(); ?>.jpg" />`のようにアップロードするファイル名が  
+ハードコーディングされているので書き換えられる。  
+
+以下のコードが書かれているファイルをアップロードしてみる。  
+```
+<?php system($_GET["cmd"]);?>
+```
+
+アップロードしたら表示されたリンクに飛び、クエリ文字列のパラメータ名cmdで自由にコマンドを実行できる。  
+
+/etc/natas_webpass/natas13　にflagがあるのでcatしてクリアできる。  
+
 
 
 
