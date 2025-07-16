@@ -62,3 +62,24 @@ preg_match関数で不正だと認識する文字を調べていて、以下の�
 ;|&`\'"
 ```
 
+結論から言うと$keyに、  
+```
+$(grep " + c + " /etc/natas_webpass/natas17)<末尾文字列>
+```
+
+のようにgrepコマンドで有効な文字列を探して次に、  
+```
+$(grep " + password + c + " /etc/natas_webpass/natas17)<末尾文字列>
+```
+のように有効な文字列から文字の順番を確定させるという解き方でした。  
+
+grepコマンドは以下のような空文字だと全ての辞書が返されます。  
+```
+grep -i "" dictionary.txt
+```
+
+もし`/etc/natas_webpass/natas17`から有効な文字が発見されたらあのflagの文字列は`dictionary.txt`には含まれないようなランダムな文字列なので、  
+`passthru("grep -i \"$key\" dictionary.txt");`の結果は何も返されないことになります。  
+この性質を利用して解いていきます。  
+
+
